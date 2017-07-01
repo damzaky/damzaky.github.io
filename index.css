@@ -1,0 +1,51 @@
+.allhold{
+	height: 100%;
+    display: table;
+    width: 100%;
+    margin: 0 auto;
+}
+.sechold{
+	     display: table-cell; 
+     vertical-align: middle; 
+}
+.blog-masthead,.blog-header{
+	    display: table;
+    margin: 0 auto;
+}
+.headcon {
+	display:block;
+}
+.row{
+
+}
+.blog-post {
+margin: 20px 15px;
+    font-size: 140%;
+	    position: relative;
+		    
+}
+.blog-main{
+	display: table;
+}
+.blog-post-meta{
+	    position: absolute;
+}
+.blog-post-title, .blog-post-meta {
+	    float: left;
+}
+.blog-post-title a,.blog-post-title a:visited{
+	    color: #cacaca;
+		display:block;
+}
+.blog-post-title a:hover{
+	color:#26decd;
+}
+.blog-post-title {
+    font-size: 100%;
+    padding-left: 10px;
+	margin: 0;
+	    margin-left: 100px;
+}
+.rowi{
+
+}
