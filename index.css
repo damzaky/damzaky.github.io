@@ -3,10 +3,12 @@
     display: table;
     width: 100%;
     margin: 0 auto;
+	    position: relative;
 }
 .sechold{
 	     display: table-cell; 
      vertical-align: middle; 
+	padding-bottom: 100px;
 }
 .blog-masthead,.blog-header{
 	    display: table;
