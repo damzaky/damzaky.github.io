@@ -49,19 +49,11 @@ margin: 20px 15px;
 .rowi{
 
 }
-.post .allhold, .sechold{
-	height:100%;
-}
 .blog-post-page-title{
 	    margin-bottom: 5px;
     color: #cacaca;
     font-size: 250%;
     line-height: 100%;
-}
-.col-sm-12{
-	max-width: 968px;
-	margin:0 auto;
-	padding: 30px;
 }
 .blog-post a:hover{
 	color:#26decd;
@@ -70,12 +62,7 @@ margin: 20px 15px;
 }
 .row {
 	color: #999999;
-	display: block;
-    margin: 0 auto;
     font-size: 100%;
-    line-height: 150%;
-	min-height: 100%;
-    height: auto;
 }
 .post{
 	    margin-bottom: 60px;
