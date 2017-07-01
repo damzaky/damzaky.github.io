@@ -69,7 +69,8 @@ line-height: 150%;
 
 }
 .post{
-	    margin-bottom: 60px;
+max-width: 968px;
+    margin: 60px auto;
 }
 .post-body h3,.post-body h4,.post-body h5,.post-body h6{
 	color: #cacaca;
