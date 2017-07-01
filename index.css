@@ -49,3 +49,74 @@ margin: 20px 15px;
 .rowi{
 
 }
+.post .allhold, .sechold{
+	height:100%;
+}
+.blog-post-title{
+	    margin-bottom: 5px;
+    color: #cacaca;
+    font-size: 250%;
+    line-height: 100%;
+}
+.col-sm-12{
+	max-width: 968px;
+	margin:0 auto;
+	padding: 30px;
+}
+.blog-post a:hover{
+	color:#26decd;
+	text-decoration:underline;
+	
+}
+.row {
+	color: #999999;
+	display: block;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 150%;
+	min-height: 100%;
+    height: auto;
+}
+.post{
+	    margin-bottom: 60px;
+}
+.post-body h3,.post-body h4,.post-body h5,.post-body h6{
+	color: #cacaca;
+
+    margin-top: 20px;
+}
+.post-body h3{
+	    font-size: 160%;
+    line-height: 150%;
+}
+.post-body b, .post-body em,.post-body strong {
+font-weight: bold;
+      }
+.post-body blockquote {
+background: #EAEAEA;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    display: table;
+    font-family: serif;
+    font-style: italic;
+    margin: 10px;
+      }
+.post-body i {
+font-style: italic;
+      }
+	  .post-body code{
+		      background: #22bfb1;
+    display: inline-block;
+    padding: 5px 7px;
+    font-size: 90%;
+    line-height: 100%;
+    color: #4e4e4e;
+	  }
+.post-body ol {
+	padding-left: 2em;
+	list-style-type: decimal; 
+}
+.post-body ul {
+	padding-left: 2em;
+	list-style-type: disc;
+}
