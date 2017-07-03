@@ -28,9 +28,12 @@ function gcd(a,b) {
 function sho(){
 var wid = document.getElementById('wid').value;
 var hei = document.getElementById('hei').value;
+ if(wid==''||hei==''){
+  var has = "please input numbers!";
+ }else {
 var kpk = gcd(wid,hei);
 var has = wid/kpk + ":" + hei/kpk;
-
+ }
  document.getElementById("result").innerHTML = has;
 
 }
