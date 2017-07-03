@@ -30,7 +30,12 @@ var wid = document.getElementById('wid').value;
 var hei = document.getElementById('hei').value;
 var kpk = gcd(wid,hei);
 var has = wid/kpk + ":" + hei/kpk;
-document.getElementById("result").innerHTML = has;
+
+if(wid.value.length == 0 || hei.value.length == 0){
+ document.getElementById("result").innerHTML = "the input is empty!";
+} else {
+ document.getElementById("result").innerHTML = has;
+}
 }
 function KeyPress(e)
 {
