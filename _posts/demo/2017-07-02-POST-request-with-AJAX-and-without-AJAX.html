@@ -85,9 +85,9 @@ Try to submit data on both forms above and check the response on <a href='https:
         // code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-xmlHttp.onreadystatechange = function()
+xmlhttp.onreadystatechange = function()
         {
-            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
             {
                 alert("Congratulations!");
             }
