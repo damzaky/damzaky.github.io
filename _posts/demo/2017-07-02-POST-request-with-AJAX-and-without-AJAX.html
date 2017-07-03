@@ -119,16 +119,13 @@ Try to submit data on both forms above and check the response on <a href='https:
     }
 };*/
     xmlhttp.send(params);
-        xmlhttp.onreadystatechange = function() {
-  if (xmlhttp.readyState === 4) {
-    var response = JSON.parse(xmlhttp.responseText);
-      if (xmlhttp.status === 200 && response.status === 'OK') {
-         console.log('successful');
-      } else {
-         console.log('failed');
-      }
-  }
-}
+xmlhttp.onreadystatechange=function(){
+       if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          console.log('xhr.readyState=',xmlhttp.readyState);
+          console.log('xhr.status=',xmlhttp.status);
+          console.log('response=',xmlhttp.responseText);
+       }
+    }
     document.getElementById("myDiv").innerHTML = "gratz";
     //alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
     return xmlhttp.responseText;
