@@ -112,3 +112,7 @@ font-style: italic;
 	padding-left: 2em;
 	list-style-type: disc;
 }
+.meta {
+	color: #a2a2a2;
+    font-size: 90%;
+}
