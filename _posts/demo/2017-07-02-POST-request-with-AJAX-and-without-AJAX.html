@@ -59,6 +59,7 @@ WITH AJAX
 <input type="button" value="Submit" onclick="javascript:AJAXPost(this)" style='display:block;'>
  
   </form>
+<div id='myDiv'></div>
 <br/>
 <br/>
 Try to submit data on both forms above and check the response on <a href='https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/viewanalytics'>this link</a> if your submission was submitted
@@ -117,6 +118,7 @@ xmlhttp.onreadystatechange = function() {
     }
 };*/
     xmlhttp.send(params);
+    document.getElementById("myDiv").innerHTML = "gratz";
     //alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
     return xmlhttp.responseText;
 }
