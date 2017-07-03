@@ -4,6 +4,8 @@ title: "POST request with AJAX and without AJAX"
 date: 2017-07-03
 tipe: demo
 ---
+WITHOUT AJAX
+<br/>
 <form action=
   "https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/formResponse"
   target="_self" method="post">
@@ -29,3 +31,64 @@ tipe: demo
 <button type='submit' style='display:block;'>Submit</button>
  
   </form>
+<br/>
+WITH AJAX
+<br/>
+<form action=
+  "https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/formResponse"
+  target="_self" method="post">
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="Name" aria-describedby=
+                      "i.desc.948698823 i.err.948698823" name="entry.1543062005" value=""
+                      dir="auto" data-initial-dir="auto" data-initial-value="" placeholder="Name" />
+  <br/>
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="E-mail"
+                      aria-describedby="i.desc.1358518643 i.err.1358518643" name=
+                      "entry.14725996" value="" dir="auto" data-initial-dir="auto"
+                      data-initial-value="" placeholder="Email"/>
+  <br/>
+                  <textarea class="quantumWizTextinputPapertextareaInput exportTextarea"
+                  jsname="YPqjbf" data-rows="1" tabindex="0" aria-label="Message"
+                  jscontroller="gZjhIf" jsaction="input:Lg5SV;ti6hGc:XMgOHc;rcuQ6b:WYd;"
+                  name="entry.1152730038" dir="auto" data-initial-dir="auto"
+                  data-initial-value="" style="height: 24px;" placeholder="message">
+</textarea>
+<button type='submit' style='display:block;' onclick="javascript:AJAXPost(this)">Submit</button>
+ 
+  </form>
+<script type='text/javascript'>
+  function AJAXPost(myself) {
+    var elem   = myself.form.elements;
+    var url    = myself.form.action;    
+    var params = "";
+    var value;
+
+    for (var i = 0; i < elem.length; i++) {
+        if (elem[i].tagName == "SELECT") {
+            value = elem[i].options[elem[i].selectedIndex].value;
+        } else {
+            value = elem[i].value;                
+        }
+        params += elem[i].name + "=" + encodeURIComponent(value) + "&";
+    }
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else { 
+        // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("POST",url,false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Content-length", params.length);
+    xmlhttp.setRequestHeader("Connection", "close");
+    xmlhttp.send(params);
+
+    return xmlhttp.responseText;
+}
+</script>
