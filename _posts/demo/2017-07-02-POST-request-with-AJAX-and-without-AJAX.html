@@ -85,13 +85,19 @@ Try to submit data on both forms above and check the response on <a href='https:
         // code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-xmlhttp.onreadystatechange = function()
-        {
-            if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
-            {
-                alert("Congratulations!");
-            }
+xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if (xmlhttp.status == 200) {
+               alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+           }
+           else if (xmlhttp.status == 400) {
+              alert('There was an error 400');
+           }
+           else {
+               alert('something else other than 200 was returned');
+           }
         }
+    };
     xmlhttp.open("POST",url,false);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-length", params.length);
