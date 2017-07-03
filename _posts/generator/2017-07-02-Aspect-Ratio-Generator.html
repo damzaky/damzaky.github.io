@@ -1,0 +1,34 @@
+---
+layout: post
+title: "Aspect Ratio"
+date: 2017-07-03
+tipe: generator
+---
+
+<form>
+<input type="text" name="wid" id="wid"> x <input type="text" id="hei" name="hei">
+ <input type="submit" value="Submit" onClick="sho()">
+</form>
+<div id='result'>
+</div>
+<script type='text/javascript'>
+function gcd(a,b) {
+    a = Math.abs(a);
+    b = Math.abs(b);
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == 0) return a;
+        a %= b;
+        if (a == 0) return b;
+        b %= a;
+    }
+}
+function sho(){
+var wid = document.getElementById('wid').value;
+var hei = document.getElementById('hei').value;
+var kpk = gcd(wid,hei);
+var has = wid/kpk + ":" + hei/kpk;
+document.getElementById("result").innerHTML = has;
+}
+
+</script>
