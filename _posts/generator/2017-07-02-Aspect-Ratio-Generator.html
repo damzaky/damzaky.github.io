@@ -26,8 +26,8 @@ function gcd(a,b) {
     }
 }
 function sho(){
-var wid = document.getElementById('wid').value;
-var hei = document.getElementById('hei').value;
+var wid = (document.getElementById('wid').value).replace(/[^\d.-]/g, '');
+var hei = (document.getElementById('hei').value).replace(/[^\d.-]/g, '');
  if(wid==''||hei==''){
   var has = "please input numbers!";
  }else {
