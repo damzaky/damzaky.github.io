@@ -6,8 +6,8 @@ tipe: generator
 ---
 
 
-<input type="text" name="wid" id="wid"> x <input type="text" id="hei" name="hei">
- <button onClick="sho()">
+<input type="text" name="wid" id="wid"> x <input type="text" id="hei" name="hei" onkeypress="return KeyPress(event);" >
+ <button onClick="sho()" id='sho'>
   Submit
 </button>
 
@@ -32,5 +32,15 @@ var kpk = gcd(wid,hei);
 var has = wid/kpk + ":" + hei/kpk;
 document.getElementById("result").innerHTML = has;
 }
-
+function KeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('sho').click();
+        return false;
+    }
+    return true;
+}
 </script>
