@@ -6,8 +6,22 @@ tipe: generator
 ---
 <button id='BUTT'>Test</button>
 <div id='myDiv'></div>
+<div id='container'></div>
 <script type='text/javascript' src='/js/jquery-3.2.1.min.js'></script>
 <script type='text/javascript'>
+    
+    $('#container').load('http://google.com'); // SERIOUSLY!
+ 
+$.ajax({
+    url: 'http://news.bbc.co.uk',
+    type: 'GET',
+    success: function(res) {
+        var headline = $(res.responseText).find('a.tsh').text();
+        alert(headline);
+    }
+});
+    
+    
     var damta;
     
      $(document).ready(function(){
