@@ -1,12 +1,9 @@
 name: Damzaky, A person
 markdown: kramdown
 collections:
-  cole:
+  posts:
     output: true
-    permalink: /:collection/:title
-  ano:
-    output: true
-    permalink: /:collection/:title
+    permalink: /:year/:month/:day/:title
   demo:
     output: true
     permalink: /:collection/:title
