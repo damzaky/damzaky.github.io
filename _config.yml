@@ -1,2 +1,6 @@
 name: Damzaky, A person
 markdown: kramdown
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
