@@ -7,3 +7,9 @@ collections:
   ano:
     output: true
     permalink: /:collection/:title
+  demo:
+    output: true
+    permalink: /:collection/:title
+  generator:
+    output: true
+    permalink: /:collection/:title
