@@ -10,7 +10,28 @@ tipe: generator
 <script type='text/javascript' src='/js/jquery-3.2.1.min.js'></script>
 <script type='text/javascript'>
     
+    var damta;
     
+     $(document).ready(function(){
+        $("#BUTT").click(function(){
+
+           $.ajax({
+          url: 'https://www.instagram.com/damzaky/media/',
+          type: 'GET',
+          dataType: 'json',
+          headers: {
+            //WRITE IF THEIR HAVE SOME HEADER REQUEST OR DATA
+          },
+          crossDomain: true,
+          success: function (data, textStatus, xhr) {
+            console.log(data);
+          },
+          error: function (xhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }
+        });
+   });
+});
     
     /*
     $('#container').load('http://google.com'); // SERIOUSLY!
