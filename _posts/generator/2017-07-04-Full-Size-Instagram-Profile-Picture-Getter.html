@@ -4,11 +4,36 @@ title: "Full Size Instagram Profile Picture Getter"
 date: 2017-07-03
 tipe: generator
 ---
-<button onclick='loadJSON("https://www.instagram.com/damzaky/media/")'>Test</button>
+<button id='BUTT'>Test</button>
 <div id='myDiv'></div>
 <script type='text/javascript' src='/js/jquery-3.2.1.min.js'></script>
 <script type='text/javascript'>
     var damta;
+    
+     $(document).ready(function(){
+        $("#BUTT").click(function(){
+
+            $.ajax({
+                type: 'POST',
+                url: 'https://www.instagram.com/damzaky/media/',
+                success: function(data) {
+                    alert(data);
+                    $("p").text(data);
+
+                }
+            });
+   });
+});
+    
+    $.ajax({
+    url: Url,
+    method: 'GET',
+    dataType: 'jsonp',
+    data: apiData,
+    success: handleData
+})
+    
+    
 function loadJSON(path){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
