@@ -16,7 +16,10 @@ tipe: generator
             $.ajax({
     url: 'https://www.instagram.com/damzaky/media/',
     method: 'GET',
-    dataType: 'jsonp'
+    dataType: 'jsonp',
+    success : function(data) {
+      damta = data;
+    }
 });
    });
 });
