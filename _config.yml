@@ -3,4 +3,4 @@ markdown: kramdown
 collections:
   posts:
     output: true
-    permalink: /blog/:title/
+    permalink: /:title/
