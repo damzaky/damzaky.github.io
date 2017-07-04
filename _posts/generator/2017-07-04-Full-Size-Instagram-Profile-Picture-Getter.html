@@ -12,26 +12,20 @@ tipe: generator
     
     var damta;
     
-     $(document).ready(function(){
-        $("#BUTT").click(function(){
-
-           $.ajax({
-          url: 'https://www.instagram.com/damzaky/media/',
-          type: 'GET',
-          dataType: 'json',
-          headers: {
-            //WRITE IF THEIR HAVE SOME HEADER REQUEST OR DATA
-          },
-          crossDomain: true,
-          success: function (data, textStatus, xhr) {
-            console.log(data);
-          },
-          error: function (xhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-          }
-        });
-   });
+// jQuery cross domain ajax
+$.get("https://www.instagram.com/damzaky/media/").done(function (data) {
+    console.log(data);
 });
+
+// using XMLHttpRequest
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://www.instagram.com/damzaky/media/", true);
+xhr.onload = function () {
+    console.log(xhr.responseText);
+    damta = JSON.stringify(xhr.responseText);
+      document.getElementById("myDiv").innerHTML = damta;
+};
+xhr.send();
     
     /*
     $('#container').load('http://google.com'); // SERIOUSLY!
