@@ -7,3 +7,6 @@ collections:
   generator:
     output: true
     permalink: /:collection/:title
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title
