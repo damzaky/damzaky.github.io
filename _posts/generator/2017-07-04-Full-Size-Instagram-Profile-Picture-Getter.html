@@ -18,7 +18,7 @@ tipe: generator
     method: 'GET',
     dataType: 'jsonp',
     success : function(data) {
-      damta = data;
+      damta = JSON.stringify(data);
       document.getElementById("myDiv").innerHTML = damta;
     }
 });
