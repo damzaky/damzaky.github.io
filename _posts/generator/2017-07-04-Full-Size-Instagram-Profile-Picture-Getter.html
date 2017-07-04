@@ -14,24 +14,16 @@ tipe: generator
         $("#BUTT").click(function(){
 
             $.ajax({
-                type: 'POST',
-                url: 'https://www.instagram.com/damzaky/media/',
-                success: function(data) {
-                    alert(data);
-                    $("p").text(data);
-
-                }
-            });
-   });
-});
-    
-    $.ajax({
-    url: Url,
+    url: 'https://www.instagram.com/damzaky/media/',
     method: 'GET',
     dataType: 'jsonp',
     data: apiData,
     success: handleData
-})
+});
+   });
+});
+    
+    
     
     
 function loadJSON(path){
