@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Full Size Instagram Profile Picture Getter"
+date: 2017-07-03
+tipe: generator
+---
+<button onclick='geti("https://instagram.com/damzaky","test")'>Test</button>
+<script type='text/javascript' src='/js/jquery-3.2.1.min.js'/>
+<script>
+function geti(url, ptitle)
+{
+    $.ajax(
+        { 
+        url: url, 
+        success: function(data) {
+            var html = $.parseHTML( data ), 
+                img = $(html).find("img"),
+                len = img.length; 
+            if( len > 0 ){
+                var src = img.first().attr("src"); // get id of first image
+            } else {
+                console.log("Image not found");
+            }
+            console.log(src);
+
+            image_tag='<img src="'+src+'" alt="'+ptitle+'"/>';
+            return image_tag;
+        } 
+    });
+}
+</script>
