@@ -17,7 +17,7 @@ tipe: generator
     url: 'https://www.instagram.com/damzaky/media/',
     jsonpCallback: 'callback',
     method: 'GET',
-    //dataType: 'JSONP',
+    dataType: 'JSONP',
     success : function(data) {
       damta = JSON.stringify(data);
       document.getElementById("myDiv").innerHTML = damta;
