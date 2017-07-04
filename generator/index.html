@@ -2,7 +2,7 @@
 layout: default
 title: Mangcoos
 ---
-	  {% for generator in site.generator %}
+	  {% for generator in site.generator reversed %}
 
 	    <div class='blog-post'><p class="blog-post-meta">{{ generator.date | date: "%m/%d/%Y" }}</p> <h2 class="blog-post-title"><a href="{{ generator.url }}" title="{{ generator.title }}">{{ generator.title }}</a></h2>
 <div style="clear:both;"></div>
