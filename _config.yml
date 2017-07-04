@@ -4,3 +4,6 @@ collections:
   posts:
     output: true
     permalink: /:tipe/:title/
+  cole:
+    output: true
+    permalink: /:collection/:title
