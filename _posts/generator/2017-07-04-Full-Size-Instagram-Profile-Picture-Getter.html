@@ -15,6 +15,7 @@ tipe: generator
 
             $.ajax({
     url: 'https://www.instagram.com/damzaky/media/',
+    jsonpCallback: 'callback',
     method: 'GET',
     dataType: 'jsonp',
     success : function(data) {
