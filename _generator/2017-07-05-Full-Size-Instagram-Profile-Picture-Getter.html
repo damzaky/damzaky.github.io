@@ -74,7 +74,11 @@ var de = (document.getElementById('inp').value).replace('@','');
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //document.getElementById("resu").innerHTML = this.responseText;
+              if(this.responseText == "The username you entered doesn't exist"){
+              document.getElementById("resu").innerHTML = this.responseText;
+              }else{
               document.getElementById("ima").src= this.responseText;
+              }
             }
         };
         xmlhttp.open("GET","https://thebungleon.appspot.com/instagram.php?u="+de,true);
