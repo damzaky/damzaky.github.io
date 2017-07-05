@@ -5,7 +5,7 @@ date: 2017-07-05
 ---
 
 <div>
-<input type="text" name="wid" id="wid"> % of <input type="text" id="hei" name="hei" onkeypress="return KeyPress(event,sho);">
+<input type="text" name="wid" id="wid"> % of <input type="text" id="hei" name="hei" onkeypress="return KeyPress(event,'sho');">
  <button onClick="sho()" id='sho'>
   Calculate
 </button>
@@ -14,7 +14,7 @@ date: 2017-07-05
 </div>
 <br/>
 <div>
-<input type="text" name="wid1" id="wid1"> is what percent of <input type="text" id="hei1" name="he1i" onkeypress="return KeyPress(event,sho1);">
+<input type="text" name="wid1" id="wid1"> is what percent of <input type="text" id="hei1" name="hei1" onkeypress="return KeyPress(event,'sho1');">
  <button onClick="sho1()" id='sho1'>
   Calculate
 </button>
@@ -23,17 +23,6 @@ date: 2017-07-05
 </div>
 
 <script type='text/javascript'>
-function gcd(a,b) {
-    a = Math.abs(a);
-    b = Math.abs(b);
-    if (b > a) {var temp = a; a = b; b = temp;}
-    while (true) {
-        if (b == 0) return a;
-        a %= b;
-        if (a == 0) return b;
-        b %= a;
-    }
-}
 function sho(){
 var wid = ((document.getElementById('wid').value).replace(/[^\d.-]/g, ''));
 var hei = ((document.getElementById('hei').value).replace(/[^\d.-]/g, ''));
