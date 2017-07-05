@@ -59,7 +59,11 @@ tipe: generator
     border-radius: 3px;
   }
   #resulta{
-   padding: 20px 0; 
+   margin: 20px 0;
+    text-align:center;
+        background: #39393e;
+    border: 1px solid #2b2b2b;
+    padding:10px;
   }
   #ima {
     display:block;max-width: 100%;
@@ -68,6 +72,7 @@ tipe: generator
 <script>
 function sho() {
   document.getElementById("resu").innerHTML = "please wait";
+  document.getElementById("ima").src= "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 var de = (document.getElementById('inp').value).replace('@','');
     if (de == "") {
         document.getElementById("resu").innerHTML = "Please fill in the blank";
