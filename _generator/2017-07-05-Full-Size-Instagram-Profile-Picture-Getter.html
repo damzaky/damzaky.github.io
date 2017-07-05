@@ -12,7 +12,7 @@ tipe: generator
 </button>
   </div>
 </div>
-<div id='resu'></div>
+<div id='resu'><img src='/' id='ima' style='display:block'></div>
 <br/>
 <a href='https://github.com/Damzaky/Full-Size-Instagram-Profile-Picture-Getter'>Click here</a> to see the source code. Don't forget to follow my instagram: <a href='https://www.instagram.com/damzaky/'>@Damzaky</a>
 <style type='text/css'>
@@ -73,7 +73,8 @@ var de = (document.getElementById('inp').value).replace('@','');
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("resu").innerHTML = this.responseText;
+                //document.getElementById("resu").innerHTML = this.responseText;
+              document.getElementById("ima").src= this.responseText;
             }
         };
         xmlhttp.open("GET","https://thebungleon.appspot.com/instagram.php?u="+de,true);
