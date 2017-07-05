@@ -83,6 +83,7 @@ var de = (document.getElementById('inp').value).replace('@','');
                 //document.getElementById("resu").innerHTML = this.responseText;
               if(this.responseText == "The username you entered doesn't exist"){
               document.getElementById("resu").innerHTML = this.responseText;
+              document.getElementById("ima").src= "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
               }else{
               document.getElementById("resu").innerHTML = "";
               document.getElementById("ima").src= this.responseText;
