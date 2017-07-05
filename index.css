@@ -132,4 +132,7 @@ font-style: italic;
 	.blog-post-page-title{
 		font-size: 150%;
 	}
+	.post{
+	margin-top:25px;	
+	}
 }
