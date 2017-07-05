@@ -18,7 +18,7 @@
 	display:block;
 }
 .row{
-
+padding:0 15px;
 }
 .blog-post {
 margin: 20px 15px;
@@ -118,4 +118,18 @@ font-style: italic;
 .meta {
 	color: #a2a2a2;
     font-size: 90%;
+}
+@media screen and (max-width: 550px) {
+	.blog-title {
+	font-size:200%;	
+	}
+	.blog-description {
+    font-size: 100%;
+}
+	.blog-header{
+	padding:20px;	
+	}
+	.blog-post-page-title{
+		font-size: 150%;
+	}
 }
