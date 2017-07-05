@@ -15,7 +15,7 @@ date: 2017-07-05
 <br/>
 <div>
 <input type="text" name="wid1" id="wid1"> is what percent of <input type="text" id="hei1" name="he1i" onkeypress="return KeyPress(event,sho1);">
- <button onClick="sho()" id='sho1'>
+ <button onClick="sho1()" id='sho1'>
   Calculate
 </button>
 <div id='result1'>
@@ -35,14 +35,25 @@ function gcd(a,b) {
     }
 }
 function sho(){
-var wid = ((document.getElementById('wid').value).replace(/[^\d.-]/g, ''))/100;
-var hei = ((document.getElementById('wid').value).replace(/[^\d.-]/g, ''));
+var wid = ((document.getElementById('wid').value).replace(/[^\d.-]/g, ''));
+var hei = ((document.getElementById('hei').value).replace(/[^\d.-]/g, ''));
  if(wid==''){
   var has = "please input numbers!";
  }else {
-var has = wid*hei;
+var has = (wid/100)*hei;
  }
  document.getElementById("result").innerHTML = has;
+}
+ 
+function sho1(){
+var wid1 = ((document.getElementById('wid1').value).replace(/[^\d.-]/g, ''));
+var hei1 = ((document.getElementById('hei1').value).replace(/[^\d.-]/g, ''));
+ if(wid==''){
+  var has = "please input numbers!";
+ }else {
+var has = (wid/hei)*100;
+ }
+ document.getElementById("result1").innerHTML = has;
 }
 
 function KeyPress(e,f)
