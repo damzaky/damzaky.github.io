@@ -67,7 +67,7 @@ tipe: generator
 </style>
 <script>
 function sho() {
-  document.getElementById("resulta").innerHTML = "please wait";
+  document.getElementById("resu").innerHTML = "please wait";
 var de = (document.getElementById('inp').value).replace('@','');
     if (de == "") {
         document.getElementById("resu").innerHTML = "Please fill in the blank";
@@ -82,9 +82,9 @@ var de = (document.getElementById('inp').value).replace('@','');
             if (this.readyState == 4 && this.status == 200) {
                 //document.getElementById("resu").innerHTML = this.responseText;
               if(this.responseText == "The username you entered doesn't exist"){
-              document.getElementById("resulta").innerHTML = this.responseText;
+              document.getElementById("resu").innerHTML = this.responseText;
               }else{
-              document.getElementById("resulta").innerHTML = "";
+              document.getElementById("resu").innerHTML = "";
               document.getElementById("ima").src= this.responseText;
               }
             }
