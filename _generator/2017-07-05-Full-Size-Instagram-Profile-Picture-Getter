@@ -1,0 +1,35 @@
+---
+layout: post
+title: "Full Size Instagram Profile Picture Getter"
+date: 2017-07-05
+tipe: generator
+---
+<input type='text' placeholder='type anything here' name='inp' id='inp'>
+<button onClick="sho()" id='sho'>
+  Submit
+</button>
+<div id='resu'></div>
+<script>
+function sho() {
+var de = (document.getElementById('inp').value);
+    if (de == "") {
+        document.getElementById("resu").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("resu").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","http://thebungleon.appspot.com/instagram.php?u="+de,true);
+        xmlhttp.send();
+    }
+}
+</script>
