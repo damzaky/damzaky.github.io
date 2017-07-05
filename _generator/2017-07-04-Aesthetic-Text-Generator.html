@@ -5,7 +5,7 @@ date: 2017-07-04
 tipe: generator
 ---
 
-<input type='text' placeholder='type anything here' name='inp' id='inp'>
+<input type='text' placeholder='type anything here' name='inp' id='inp' onkeypress="return KeyPress(event);">
 <button onClick="sho()" id='sho'>
   Submit
 </button>
@@ -25,5 +25,16 @@ var find = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q",
 var replace = ["ａ","ｂ","ｃ","ｄ","ｅ","ｆ","ｇ","ｈ","ｉ","ｊ","ｋ","ｌ","ｍ","ｎ","ｏ","ｐ","ｑ","ｒ","ｓ","ｔ","ｕ","ｖ","ｗ","ｘ","ｙ","ｚ","Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ","Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ","Ｓ","Ｔ","Ｕ","Ｖ","Ｗ","Ｘ","Ｙ","Ｚ"];
     text = replaceStr(text, find, replace);
 document.getElementById("res").innerHTML = text;
+}
+  function KeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('sho').click();
+        return false;
+    }
+    return true;
 }
 </script>
