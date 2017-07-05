@@ -12,7 +12,7 @@ tipe: generator
 </button>
   </div>
 </div>
-<div id='resu'><img src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' id='ima' style='display:block;max-width: 100%;'></div>
+<div id='resulta'><div id='resu'></div><img src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' id='ima'></div>
 <br/>
 <a href='https://github.com/Damzaky/Full-Size-Instagram-Profile-Picture-Getter'>Click here</a> to see the source code. Don't forget to follow my instagram: <a href='https://www.instagram.com/damzaky/'>@Damzaky</a>
 <style type='text/css'>
@@ -58,9 +58,16 @@ tipe: generator
     cursor: pointer;
     border-radius: 3px;
   }
+  #resulta{
+   padding: 20px 0; 
+  }
+  #ima {
+    display:block;max-width: 100%;
+  }
 </style>
 <script>
 function sho() {
+  document.getElementById("resulta").innerHTML = "please wait";
 var de = (document.getElementById('inp').value).replace('@','');
     if (de == "") {
         document.getElementById("resu").innerHTML = "Please fill in the blank";
@@ -75,8 +82,9 @@ var de = (document.getElementById('inp').value).replace('@','');
             if (this.readyState == 4 && this.status == 200) {
                 //document.getElementById("resu").innerHTML = this.responseText;
               if(this.responseText == "The username you entered doesn't exist"){
-              document.getElementById("resu").innerHTML = this.responseText;
+              document.getElementById("resulta").innerHTML = this.responseText;
               }else{
+              document.getElementById("resulta").innerHTML = "";
               document.getElementById("ima").src= this.responseText;
               }
             }
