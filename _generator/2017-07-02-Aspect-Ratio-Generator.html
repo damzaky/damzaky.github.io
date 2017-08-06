@@ -8,7 +8,7 @@ tipe: generator
 Fill those two fields with numbers, e.g: 1024x768, 1920x1080.
 <br/>
 <input type="text" name="wid" id="wid"> x <input type="text" id="hei" name="hei" onkeypress="return KeyPress(event);">
- <button onClick="sho()" id='sho'>
+ <button onClick="sho(oo)" id='sho'>
   Submit
 </button>
 <br/>
@@ -30,7 +30,10 @@ function gcd(a,b) {
         b %= a;
     }
 }
-function sho(){
+ 
+ var oo = { width: 0, height: 0 };
+ 
+function sho(ov){
 var wid = (document.getElementById('wid').value).replace(/[^\d.-]/g, '');
 var hei = (document.getElementById('hei').value).replace(/[^\d.-]/g, '');
  if(wid==''||hei==''){
@@ -40,19 +43,23 @@ var kpk = gcd(wid,hei);
 //var has =  + ":" + ;
   document.getElementById("res").value =wid/kpk;
   document.getElementById("res1").value =hei/kpk;
+  ov.width=wid/kpk;
+  ov.height=hei/kpk;
  }
 
 }
  
+ 
+ 
  function incdec() {
-document.getElementById("res1").value=(document.getElementById("res").value*2);
+document.getElementById("res1").value=(document.getElementById("res").value/oo.width*document.getElementById("res1").value);
 }
 var e = document.getElementById('res');
        e.oninput = incdec;
        e.onpropertychange = e.oninput;
  
   function incdec2() {
-document.getElementById("res").value=(document.getElementById("res1").value*2);
+document.getElementById("res").value=(document.getElementById("res1").value/oo.height*document.getElementById("res").value);
 }
 var e1 = document.getElementById('res1');
        e1.oninput = incdec2;
