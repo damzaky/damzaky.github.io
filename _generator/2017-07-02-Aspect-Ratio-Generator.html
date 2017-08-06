@@ -52,14 +52,14 @@ var kpk = gcd(wid,hei);
  
  
  function incdec() {
-document.getElementById("res1").value=(document.getElementById("res").value/oo.width*document.getElementById("res1").value);
+document.getElementById("res1").value=(document.getElementById("res").value/oo.width*oo.height);
 }
 var e = document.getElementById('res');
        e.oninput = incdec;
        e.onpropertychange = e.oninput;
  
   function incdec2() {
-document.getElementById("res").value=(document.getElementById("res1").value/oo.height*document.getElementById("res").value);
+document.getElementById("res").value=(document.getElementById("res1").value/oo.height*oo.width);
 }
 var e1 = document.getElementById('res1');
        e1.oninput = incdec2;
