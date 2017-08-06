@@ -11,9 +11,13 @@ Fill those two fields with numbers, e.g: 1024x768, 1920x1080.
  <button onClick="sho()" id='sho'>
   Submit
 </button>
-
+<br/>
 <div id='result'>
 </div>
+<input type="number" id="res" value>
+<input type="number" id="res1" value>
+
+
 <script type='text/javascript'>
 function gcd(a,b) {
     a = Math.abs(a);
@@ -30,14 +34,30 @@ function sho(){
 var wid = (document.getElementById('wid').value).replace(/[^\d.-]/g, '');
 var hei = (document.getElementById('hei').value).replace(/[^\d.-]/g, '');
  if(wid==''||hei==''){
-  var has = "please input numbers!";
+   document.getElementById("result").innerHTML = "please input numbers!";
  }else {
 var kpk = gcd(wid,hei);
-var has = wid/kpk + ":" + hei/kpk;
+//var has =  + ":" + ;
+  document.getElementById("res").value =wid/kpk;
+  document.getElementById("res1").value =hei/kpk;
  }
- document.getElementById("result").innerHTML = has;
 
 }
+ 
+ function incdec() {
+document.getElementById("res1").value=(document.getElementById("res").value*2);
+}
+var e = document.getElementById('res');
+       e.oninput = incdec;
+       e.onpropertychange = e.oninput;
+ 
+  function incdec2() {
+document.getElementById("res").value=(document.getElementById("res1").value*2);
+}
+var e1 = document.getElementById('res1');
+       e1.oninput = incdec2;
+       e1.onpropertychange = e1.oninput;
+ 
 function KeyPress(e)
 {
     // look for window.event in case event isn't passed in
@@ -51,8 +71,7 @@ function KeyPress(e)
 }
  /*
 
-<input type="number" id="myNumber" value="1">
-<input type="number" id="myNumber1" value="1">
+
 
 function myHandler() {
 document.getElementById("myNumber1").value=(document.getElementById("myNumber").value*2);
