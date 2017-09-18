@@ -10,7 +10,7 @@
 	<meta name="author" content="Damar Zaky">
 
 	<title>{% if page.title %} {{ page.title }} | {% endif %} Mangcoos</title>
-	
+	<link rel="alternate" title="{{ site.title }}" type="application/json" href="{{ "/feed.json" | prepend: site.baseurl | prepend: site.url }}" />
 	<link href="/blog.css" rel="stylesheet">
 		<link href="/index.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
