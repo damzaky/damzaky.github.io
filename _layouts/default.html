@@ -50,7 +50,7 @@
 {{ content }}
 
 {% for repository in site.github.public_repositories %}
-  {% if repository.homepage %}
+  {% if repository.homepage!=null and repository.homepage!="https://damzaky.github.io/" %}
   <a href='{{ repository.homepage }}'>
     {{ repository.name }}
   </a>
