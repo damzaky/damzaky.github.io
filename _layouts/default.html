@@ -49,12 +49,7 @@
 <div class='rowi'>
 {{ content }}
 
-{% for repository in site.github.public_repositories %}
-  <a href='{{ repository.url }}'>
-    {{ repository.name }}
-  </a>
-  {{ repository }}
-{% endfor %}
+
 
 		</div>
 	</div>
@@ -64,5 +59,15 @@
  
 </div>
 </div>
+<script>
+/*
+{% for repository in site.github.public_repositories %}
+  <a href='{{ repository.url }}'>
+    {{ repository.name }}
+  </a>
+  {{ repository }}
+{% endfor %}
+*/
+</script>
   </body>
 </html>
