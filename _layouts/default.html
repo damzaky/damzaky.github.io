@@ -50,7 +50,7 @@
 {{ content }}
 
 {% for repository in site.github.public_repositories %}
-  <a href='{{ repository.html_url }}'>
+  <a href='{{ repository.url }}'>
     {{ repository.name }}
   </a>
 {% endfor %}
