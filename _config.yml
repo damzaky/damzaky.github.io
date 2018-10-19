@@ -10,3 +10,5 @@ collections:
   posts:
     output: true
     permalink: /:year/:month/:day/:title
+plugins:
+  - jekyll-github-metadata
