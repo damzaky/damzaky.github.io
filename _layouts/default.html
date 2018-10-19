@@ -50,10 +50,11 @@
 {{ content }}
 
 {% for repository in site.github.public_repositories %}
-  <a href='{{ repository.url }}'>
+  {% if repository.homepage %}}
+  <a href='{{ repository.homepage }}'>
     {{ repository.name }}
   </a>
-  {{ repository }}
+  {% endif %}
 {% endfor %}
 
 		</div>
