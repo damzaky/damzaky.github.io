@@ -1,0 +1,79 @@
+---
+layout: post
+title: "Element Combinator"
+date: 2018-10-20
+tipe: generator
+---
+Elements:
+<br>
+<div id='elements'>
+<input type='text' id='e1'>
+</div>
+<button id='add'>Add element</button>
+<button id='rem'>Remove element</button>
+<button id='sub'>Generate</button>
+<div id='out'></div>
+<script>
+counter=1
+document.getElementById('add').addEventListener('click', function() {
+	nu = document.createElement("input");
+	nu.setAttribute("id", "e"+(counter+1));
+	nu.setAttribute("type","text");
+    document.getElementById("elements").appendChild(nu);
+	counter++;
+}, false);
+document.getElementById('sub').addEventListener('click', function() {
+	create(counter)
+}, false);
+document.getElementById('rem').addEventListener('click', function() {
+	if(counter!=0){
+		var remo = document.getElementById("e"+(counter));
+		remo.parentElement.removeChild(remo);
+		counter--;
+	}
+}, false);
+function com(c,t){
+	if(c!=0){
+		for(var i=1;i<=t;i++){
+			if(!(udah.includes(i))){
+				udah.push(i)
+				com(c-1,t)
+				if(c==1){
+					var out=document.getElementById('out')
+					//alle.push(test)
+					//var str=udah
+					var tosen = udah.map(function(j){
+						 return elm[j-1];
+					})
+					out.appendChild(document.createTextNode(tosen.join(" ")));
+					out.appendChild(document.createElement("br"));
+					console.log("lima",udah)
+				}
+					
+				udah.pop()
+			}
+		}
+	}
+}
+var udah
+function create(t){
+	var ovt = document.getElementById("out");
+	while (ovt.firstChild) {
+		ovt.removeChild(ovt.firstChild);
+	}
+	//alle=[]
+	elm=[]
+	for(var i=0;i<t;i++){
+		elm.push(document.getElementById("e"+(i+1)).value)
+	}
+	console.log(elm)
+	udah=[]
+	for(var i=1;i<=t;i++){
+		udah.push(i)
+		com(t-1,t)
+		udah.pop()
+	}
+	//console.log(alle)
+}
+
+</script>
