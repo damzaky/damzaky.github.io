@@ -72,6 +72,22 @@ color: #999999;
 max-width: 968px;
        margin: 60px auto;
 }
+.post input[type=text] {
+background: #3e3e3e;
+    border: 1px solid #676767;
+    color: #b3b3b3;
+    outline: none!important;
+    padding: 5px;
+    border-radius: 3px;
+}
+.post button{
+	background: #22bfb1;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
 .post-body {
 margin-bottom: 60px;	
 }

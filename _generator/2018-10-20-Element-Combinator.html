@@ -6,11 +6,11 @@ tipe: generator
 ---
 Elements:
 <br>
+<button id='add'>Add element</button>
+<button id='rem'>Remove element</button>
 <div id='elements'>
 <input type='text' id='e1'>
 </div>
-<button id='add'>Add element</button>
-<button id='rem'>Remove element</button>
 <button id='sub'>Generate</button>
 <div id='out'></div>
 <script>
@@ -32,6 +32,7 @@ document.getElementById('rem').addEventListener('click', function() {
 		counter--;
 	}
 }, false);
+var cc
 function com(c,t){
 	if(c!=0){
 		for(var i=1;i<=t;i++){
@@ -45,9 +46,10 @@ function com(c,t){
 					var tosen = udah.map(function(j){
 						 return elm[j-1];
 					})
-					out.appendChild(document.createTextNode(tosen.join(" ")));
+					out.appendChild(document.createTextNode(cc+". "+tosen.join(" ")));
 					out.appendChild(document.createElement("br"));
 					console.log("lima",udah)
+					cc++
 				}
 					
 				udah.pop()
@@ -57,6 +59,7 @@ function com(c,t){
 }
 var udah
 function create(t){
+	cc=1
 	var ovt = document.getElementById("out");
 	while (ovt.firstChild) {
 		ovt.removeChild(ovt.firstChild);
