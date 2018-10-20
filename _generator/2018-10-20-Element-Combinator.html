@@ -8,27 +8,33 @@ Elements:
 <br>
 <button id='add'>Add element</button>
 <button id='rem'>Remove element</button>
-<div id='elements'>
-<input type='text' id='e1'>
+<div id='elements' style='margin:20px 0;'>
+<div>Element 1: <input type='text' id='e1'></div>
 </div>
 <button id='sub'>Generate</button>
 <div id='out'></div>
 <script>
 counter=1
 document.getElementById('add').addEventListener('click', function() {
+	div = document.createElement("div");
 	nu = document.createElement("input");
 	nu.setAttribute("id", "e"+(counter+1));
 	nu.setAttribute("type","text");
-    document.getElementById("elements").appendChild(nu);
+	div.appendChild(document.createTextNode("Element "+(counter+1)+": "))
+    div.appendChild(nu);
+	//div.appendChild(document.createElement("br"));
+	
+	document.getElementById("elements").appendChild(div)
 	counter++;
 }, false);
 document.getElementById('sub').addEventListener('click', function() {
 	create(counter)
 }, false);
 document.getElementById('rem').addEventListener('click', function() {
-	if(counter!=0){
-		var remo = document.getElementById("e"+(counter));
-		remo.parentElement.removeChild(remo);
+	if(counter!=1){
+		document.getElementById("elements").removeChild(document.getElementById("elements").lastChild);
+		//var remo = document.getElementById("e"+(counter));
+		//remo.parentElement.removeChild(remo);
 		counter--;
 	}
 }, false);
@@ -48,7 +54,6 @@ function com(c,t){
 					})
 					out.appendChild(document.createTextNode(cc+". "+tosen.join(" ")));
 					out.appendChild(document.createElement("br"));
-					console.log("lima",udah)
 					cc++
 				}
 					
@@ -69,7 +74,6 @@ function create(t){
 	for(var i=0;i<t;i++){
 		elm.push(document.getElementById("e"+(i+1)).value)
 	}
-	console.log(elm)
 	udah=[]
 	for(var i=1;i<=t;i++){
 		udah.push(i)
