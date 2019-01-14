@@ -3,3 +3,4 @@ Some documentation about my coding journey, just visit it here: [damzaky.github.
 
 ## Some explanation
 Well, I honestly don't know what to write or what to display on this page yet, but I guess it'll be about programming, not about my daily life stories hahah
+for some reason it's not working
