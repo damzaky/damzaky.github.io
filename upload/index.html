@@ -5,7 +5,7 @@ title: Form Pengisian Dokumen Ber-typo
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 
 <div id='bar'>
-	Page Views: <span id='count'></span>
+	Page views: <span id='count'></span> Documents collected: <span id='coll'></span>
 </div>
 
 
@@ -83,6 +83,7 @@ table{
 </style>
 <script>
 	var count=document.getElementById('count');
+	var coll=document.getElementById('coll');
 	function httpGet(theUrl)
 	{
 	    var xmlHttp = new XMLHttpRequest();
@@ -91,7 +92,8 @@ table{
 	    return xmlHttp.responseText;
 	}
 	window.onload = function() {
-	count.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbwFbnqOhy2Fra3qZOvSo1zWX6gMrjZfhDLUb7VDDKvo8H2UpDqd/exec');
+		count.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbwFbnqOhy2Fra3qZOvSo1zWX6gMrjZfhDLUb7VDDKvo8H2UpDqd/exec');
+		coll.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbzwHDg8ox49ZWhp60IissIjG-B6PHIdQkpNkcGQHrsnqBdlsd8/exec');
 	};
 	var ori="Klik di sini atau seret file-file ke sini";
 	var inp;
