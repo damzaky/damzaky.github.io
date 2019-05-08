@@ -4,9 +4,15 @@ title: Form Pengisian Dokumen Ber-typo
 ---
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 
-<div id='bar'>
-	Page views: <span id='count'></span> Documents collected: <span id='coll'></span>
-</div>
+
+<table id='bar'>
+<tbody>
+<tr>
+	<td>Page views: <span id="count">6</span></td><td>Documents collected: <span id="coll">21</span></td>
+</tr>
+</tbody>
+</table>
+
 
 
 <form id='meta' onsubmit="event.preventDefault(); subm();">
@@ -15,7 +21,7 @@ title: Form Pengisian Dokumen Ber-typo
 	<textarea name="link" placeholder="berita, artikel blog, atau teks inputan langsung"></textarea>
 	<h3>File upload:</h3>
         <input name="file[]" id="uploadfile" type="file" multiple>
-<label for="uploadfile" id='forfile'><table>  <tr>
+<label for="uploadfile" id='forfile'><table id='tab'>  <tr>
      <td style="text-align: center; vertical-align: middle;">
           <span id='dalem'>Klik di sini atau seret file-file ke sini</span>
      </td>
@@ -25,6 +31,9 @@ title: Form Pengisian Dokumen Ber-typo
         <input type='submit' id="submit" value='kirim'>
 </form>
 <style>
+	#bar td{
+		width:50%;
+	}
 	textarea{
     background: #3e3e42;
     border: 1px solid #909090;
@@ -44,7 +53,7 @@ title: Form Pengisian Dokumen Ber-typo
     font-size: 140%;
 	margin-bottom: 10px;
 	}
-table{
+#tab{
 	    width: 100%;
     min-height: 300px;
 }
