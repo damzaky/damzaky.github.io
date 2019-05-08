@@ -4,24 +4,183 @@ title: Form Pengisian Dokumen Ber-typo
 ---
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 
-    <form id="form" method="post" action="https://script.google.com/macros/s/AKfycbytn-nZMLwiF-6GI1fvGloSfZOBX67M82LBFFIJWT_NqBcc2JI/exec">
-        Upload a file
+
+
+
+<form id='meta' onsubmit="event.preventDefault(); subm();">
         <div id="data"></div>
-        <input name="file" id="uploadfile" type="file">
-        <input id="submit" type="submit">
-    </form>
-    <script>
-    $('#uploadfile').on("change", function() {
-        var file = this.files[0];
+        <input name="file[]" id="uploadfile" type="file" multiple>
+<label for="uploadfile" id='forfile'><table>  <tr>
+     <td style="text-align: center; vertical-align: middle;">
+          <span id='dalem'>Klik di sini atau seret file-file ke sini</span>
+     </td>
+  </tr></table></label>
+
+
+        <input type='submit' id="submit">
+</form>
+<style>
+table{
+	    width: 100%;
+    min-height: 300px;
+}
+#uploadfile{
+	display: none;
+}
+#forfile{
+	/*background: #ddd;*/
+	display:block;
+	padding: 20px;
+	
+	vertical-align: middle;
+	/*line-height: 100%;*/
+	text-align:center;
+	
+	border: 3px dashed #909090;
+	border-radius: 15px;
+	cursor: pointer;
+	
+}
+#forfile span{
+	font-size: 220%;
+	color: #909090;
+	font-family: arial, sans-serif;
+}
+#submit{
+	    border: 0!important;
+    background: #22bfb1;
+    color: #fff;
+    padding: 15px 35px;
+    font-size: 200%;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+}
+</style>
+<script>
+	var ori="Klik di sini atau seret file-file ke sini";
+	var inp;
+	var dalem=document.getElementById('dalem');
+	var fileInput = document.getElementById('uploadfile');
+	var dropContainer=document.getElementById('forfile');
+dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
+  evt.preventDefault();
+};
+
+dropContainer.ondrop = function(evt) {
+  // pretty simple -- but not for IE :(
+  fileInput.files = evt.dataTransfer.files;
+  hate();
+ // console.log('masuk')
+  
+  evt.preventDefault();
+};
+
+function hate(){
+	 inp= document.getElementById("uploadfile");
+ console.log(inp.files)
+    $("#data").empty();
+     html='';
+     // dalem.innerHTML = inp.files.length==0? ori : inp.files.length+' file terinputkan'
+     if(inp.files.length==0){
+     	dalem.innerHTML = ori;
+     }else{
+     	var c=''
+     	for(var i=0;i<inp.files.length;i++){
+     		if(i==inp.files.length-1){
+     			c+=inp.files[i].name;
+     		}else{
+     			c+=inp.files[i].name+', ';
+     		}
+     		
+     	}
+     	dalem.innerHTML = c;
+     }
+    for(var i=0;i<inp.files.length;i++){
+        var file = inp.files[i];
         var fr = new FileReader();
-        fr.fileName = file.name
+        fr.fileName = file.name;
         fr.onload = function(e) {
-            e.target.result
-            html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
-            html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
-            html += '<input type="hidden" name="filename" value="' + e.target.fileName + '" >';
-            $("#data").empty().append(html);
+            e.target.result;
+            // console.log(file)
+
+
+
+            html = '<input type="hidden" name="data[]" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+            html += '<input type="hidden" name="mimetype[]" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
+            html += '<input type="hidden" name="filename[]" value="' + e.target.fileName + '" >';
+            // console.log('awal',html)
+            $("#data").append(html);
         }
+
         fr.readAsDataURL(file);
+    }
+}
+
+
+$('#uploadfile').on("change", function() {
+	hate();
+        
+        
     });
-    </script>
+
+
+// 
+// var params = Object.entries(dat).map(e => e.join('=')).join('&');
+// var params = 'orem=ipsum&name=binny'
+var j;
+function tunggu() {
+ if(j==0){
+ 	dalem.innerHTML = 'Harap tunggu, servernya agak lemod :(.';
+ }else if(j==1){
+ 	dalem.innerHTML = 'Harap tunggu, servernya agak lemod :(..';
+ }else if(j==2){
+ 	dalem.innerHTML = 'Harap tunggu, servernya agak lemod :(...';
+ }else if(j==3){
+ 	dalem.innerHTML = 'Harap tunggu, servernya agak lemod :(....';
+ }else if(j==4){
+ 	dalem.innerHTML = 'Harap tunggu, servernya agak lemod :(....';
+ }
+
+ // else if(j==5){
+ // 	dalem.innerHTML = 'Harap tunggu /';
+ // }else if(j==6){
+ // 	dalem.innerHTML = 'Harap tunggu -';
+ // }else if(j==7){
+ // 	dalem.innerHTML = 'Harap tunggu \\';
+ // }
+
+ if(j==4){
+ 	j=0;
+ }else{
+ 	j++;
+ }
+}
+var intr;
+function subm(){
+	j=0;
+	var http = new XMLHttpRequest();
+
+var url = 'https://script.google.com/macros/s/AKfycbytn-nZMLwiF-6GI1fvGloSfZOBX67M82LBFFIJWT_NqBcc2JI/exec';
+intr = window.setInterval(tunggu, 300);
+// var params = 'file[]=hello.txt&mimetype[]=data:text/plain&data[]=aGVoZQ=='
+var params=$('form').serialize();
+http.open('POST', url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+        console.log(http.responseText);
+        if(http.responseText=='good'){
+        	dalem.innerHTML = 'Pengunggahan berhasil, terima kasih atas bantuannya!';
+        }
+        
+    }
+    clearInterval(intr);
+}
+http.send(params);
+
+}
+</script>
