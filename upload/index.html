@@ -103,10 +103,14 @@ title: Form Pengisian Dokumen Ber-typo
 	    xmlHttp.send( null );
 	    return xmlHttp.responseText;
 	}
-	window.onload = function() {
+// 	window.onload = function() {
+// 		count.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbwFbnqOhy2Fra3qZOvSo1zWX6gMrjZfhDLUb7VDDKvo8H2UpDqd/exec');
+// 		coll.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbzwHDg8ox49ZWhp60IissIjG-B6PHIdQkpNkcGQHrsnqBdlsd8/exec');
+// 	};
+	window.addEventListener("load", function(){
 		count.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbwFbnqOhy2Fra3qZOvSo1zWX6gMrjZfhDLUb7VDDKvo8H2UpDqd/exec');
 		coll.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbzwHDg8ox49ZWhp60IissIjG-B6PHIdQkpNkcGQHrsnqBdlsd8/exec');
-	};
+	});
 	var ori="Klik di sini atau seret file-file ke sini";
 	var inp;
 	var dalem=document.getElementById('dalem');
