@@ -28,7 +28,7 @@ table{
 	display: none;
 }
 #forfile{
-	/*background: #ddd;*/
+	background: #3e3e42;
 	display:block;
 	padding: 20px;
 	
@@ -72,7 +72,7 @@ dropContainer.ondrop = function(evt) {
   fileInput.files = evt.dataTransfer.files;
   hate();
  // console.log('masuk')
-  
+  dropContainer.style.background = 'transparent';
   evt.preventDefault();
 };
 
@@ -84,6 +84,7 @@ function hate(){
      // dalem.innerHTML = inp.files.length==0? ori : inp.files.length+' file terinputkan'
      if(inp.files.length==0){
      	dalem.innerHTML = ori;
+	dropContainer.style.background = '#3e3e42';
      }else{
      	var c=''
      	for(var i=0;i<inp.files.length;i++){
