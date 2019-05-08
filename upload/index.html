@@ -4,7 +4,9 @@ title: Form Pengisian Dokumen Ber-typo
 ---
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 
-
+<div id='bar'>
+	Page Views: <span id='count'></span>
+</div>
 
 
 <form id='meta' onsubmit="event.preventDefault(); subm();">
@@ -34,7 +36,7 @@ title: Form Pengisian Dokumen Ber-typo
     font-size: 120%;
 		    box-sizing: border-box;
 		width:100%;
-		
+		max-width:100%;
 }
 	
 .post-body h3{
@@ -80,6 +82,15 @@ table{
 }
 </style>
 <script>
+	var count=document.getElementById('count');
+	function httpGet(theUrl)
+	{
+	    var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+	    xmlHttp.send( null );
+	    return xmlHttp.responseText;
+	}
+	count.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbwFbnqOhy2Fra3qZOvSo1zWX6gMrjZfhDLUb7VDDKvo8H2UpDqd/exec');
 	var ori="Klik di sini atau seret file-file ke sini";
 	var inp;
 	var dalem=document.getElementById('dalem');
@@ -195,14 +206,17 @@ http.open('POST', url, true);
 http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
 http.onreadystatechange = function() {//Call a function when the state changes.
+	clearInterval(intr);
     if(http.readyState == 4 && http.status == 200) {
         console.log(http.responseText);
         if(http.responseText=='good'){
         	dalem.innerHTML = 'Pengunggahan berhasil, terima kasih atas bantuannya!';
         }
         
+    }else{
+	    dalem.innerHTML = 'Pengunggahan gagal :(';
     }
-    clearInterval(intr);
+    
 }
 http.send(params);
 
