@@ -9,8 +9,8 @@ title: Form Pengisian Dokumen Ber-typo
 
 <form id='meta' onsubmit="event.preventDefault(); subm();">
         <div id="data"></div>
-	<h3>Link or direct input (untuk artikel berita dll, opsional):</h3>
-	<textarea name="link"></textarea>
+	<h3>Link or direct input (opsional):</h3>
+	<textarea name="link" placeholder="berita, artikel blog, atau teks inputan langsung"></textarea>
 	<h3>File upload:</h3>
         <input name="file[]" id="uploadfile" type="file" multiple>
 <label for="uploadfile" id='forfile'><table>  <tr>
@@ -34,6 +34,7 @@ title: Form Pengisian Dokumen Ber-typo
     font-size: 120%;
 		    box-sizing: border-box;
 		width:100%;
+		
 }
 	
 .post-body h3{
