@@ -25,6 +25,7 @@ title: Form Pengisian Dokumen Ber-typo
 	<h3>Link or direct input (opsional):</h3>
 	<textarea id='txta' name="link" placeholder="berita, artikel blog, atau teks inputan langsung"></textarea>
 	<h3>File upload:</h3>
+	<div id='mobile'>Di mobile biasanya gak bisa upload :(, mungkin bisa input text aja di form di atas, terima kasih sudah mau bantu saya!</div>
         <input name="file[]" id="uploadfile" type="file" multiple>
 <label for="uploadfile" id='forfile'><table id='tab'>  <tr>
      <td style="text-align: center; vertical-align: middle;">
@@ -36,6 +37,9 @@ title: Form Pengisian Dokumen Ber-typo
         <input type='submit' id="submit" value='kirim'>
 </form>
 <style>
+	#mobile{
+		display: none;
+	}
 	#bar{
 		width: 100%;	
 	}
@@ -105,6 +109,9 @@ title: Form Pengisian Dokumen Ber-typo
 		#forfile{
 			display: none;
 		}
+		#mobile{
+		display: block;
+	}
 }
 </style>
 <script>
