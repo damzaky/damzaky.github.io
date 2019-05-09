@@ -252,15 +252,15 @@ http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
 http.onreadystatechange = function() {//Call a function when the state changes.
 	clearInterval(intr);
-	$("#data").empty();
+	
     if(http.readyState == 4 && http.status == 200) {
-	    txta.innerHTML=''
+	    txta.value=''
         console.log(http.responseText);
         if(http.responseText=='good'){
         	dalem.innerHTML = 'Pengunggahan berhasil, terima kasih atas bantuannya!';
 		coll.innerHTML=httpGet('https://script.google.com/macros/s/AKfycbzwHDg8ox49ZWhp60IissIjG-B6PHIdQkpNkcGQHrsnqBdlsd8/exec');
         }
-        
+        $("#data").empty();
     }else if(http.status >= 500){
 	    dalem.innerHTML = 'Pengunggahan gagal :(';
     }
