@@ -100,8 +100,6 @@ title: Form Pengisian Dokumen Ber-typo
 }
 </style>
 <script>
-	var lin=document.getElementsByName('link')[0].value;
-	var fila=document.getElementsByName('data[]')[0].value;
 	
 	
 	var count=document.getElementById('count');
@@ -224,7 +222,7 @@ function tunggu() {
 }
 var intr;
 function subm(){
-	if(lin!=''||fila!=''){
+	if(document.getElementsByName('link')[0].value!=''||$('input[name="data[]"]').length>0){
 	j=0;
 	var http = new XMLHttpRequest();
 
