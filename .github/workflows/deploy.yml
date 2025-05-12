@@ -35,7 +35,7 @@ jobs:
             if gh api repos/damzaky/$repo/pages &> /dev/null; then
               branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
              if [ -n "$branch" ]; then
-                echo "$repo $branch" >> ../eligible.txt
+                echo "$repo $branch" >> eligible.txt
               fi
             fi
           done < ../repos.txt
@@ -71,7 +71,10 @@ jobs:
             find ../../$repo -name "*.html" -exec sed -i "/<\/head>/i $GA_SCRIPT" {} +
 
             cd ..
-          done < ../eligible.txt
+          INPUT_FILE=$(realpath ../eligible.txt)
+          while IFS=' ' read -r repo branch || [ -n "$repo" ]; do
+            ...
+          done < "$INPUT_FILE"
 
       - name: Clean old files (except .git and .github)
         run: |
