@@ -23,7 +23,7 @@ jobs:
           cd sites
 
           # List all user repositories
-          gh repo list ALREADYMYUSERNAME --limit 1000 --json name --jq '.[].name' > repos.txt
+          gh repo list damzaky --limit 1000 --json name --jq '.[].name' > repos.txt
           > eligible.txt
 
           while read -r repo; do
@@ -32,8 +32,8 @@ jobs:
               echo "⚠️ Skipping empty repo name"
               continue
             fi
-            if gh api repos/ALREADYMYUSERNAME/$repo/pages &> /dev/null; then
-              branch=$(gh api repos/ALREADYMYUSERNAME/$repo/pages --jq .source.branch)
+            if gh api repos/damzaky/$repo/pages &> /dev/null; then
+              branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
               if [ -n "$branch" ]; then
                 echo "$repo $branch" >> eligible.txt
               fi
@@ -50,14 +50,14 @@ jobs:
           GA_ID=${{ vars.GA_MEASUREMENT_ID }}
 
           read -r -d '' GA_SCRIPT <<EOF
-<script async src="https://www.googletagmanager.com/gtag/js?id=$GA_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "$GA_ID");
-</script>
-EOF
+          <script async src="https://www.googletagmanager.com/gtag/js?id=$GA_ID"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag("js", new Date());
+            gtag("config", "$GA_ID");
+          </script>
+          EOF
 
           while IFS=' ' read -r repo branch || [ -n "$repo" ]; do
             if [ -z "$repo" ] || [ -z "$branch" ]; then
@@ -66,7 +66,7 @@ EOF
             fi
 
             echo "📦 Processing $repo ($branch)"
-            gh repo clone ALREADYMYUSERNAME/$repo
+            gh repo clone damzaky/$repo
             cd $repo
             git checkout $branch
 
