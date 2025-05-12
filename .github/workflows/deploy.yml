@@ -34,7 +34,9 @@ jobs:
             fi
             if gh api repos/damzaky/$repo/pages &> /dev/null; then
               branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
-              echo "$repo $branch" >> ../eligible.txt
+             if [ -n "$branch" ]; then
+                echo "$repo $branch" >> ../eligible.txt
+              fi
             fi
           done < ../repos.txt
 
