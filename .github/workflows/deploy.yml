@@ -6,7 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: github-pages
 
     steps:
       - name: Checkout current site
@@ -23,11 +22,11 @@ jobs:
           mkdir -p sites
           cd sites
 
-          # List all user repositories
-          gh repo list damzaky --limit 1000 --json name --jq '.[].name' > repos.txt
-          > eligible.txt
+          # List only repos that have GitHub Pages enabled
+          gh repo list damzaky --limit 1000 --json name --jq '.[].name' > ../repos.txt
+          echo "" > ../eligible.txt
 
-          while read -r repo; do
+          while read repo; do
             echo "Checking $repo"
             if [ -z "$repo" ]; then
               echo "⚠️ Skipping empty repo name"
@@ -35,39 +34,27 @@ jobs:
             fi
             if gh api repos/damzaky/$repo/pages &> /dev/null; then
               branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
-              if [ -n "$branch" ]; then
-                echo "$repo $branch" >> eligible.txt
+             if [ -n "$branch" ]; then
+                echo "$repo $branch" >> ../eligible.txt
               fi
             fi
-          done < repos.txt
+          done < ../repos.txt
 
       - name: Clone, Inject, Copy
         run: |
-          set -euxo pipefail
           cd sites
-          echo "---- eligible.txt ----"
-          cat eligible.txt
-          echo "----------------------"
-
           GA_ID=${{ vars.GA_MEASUREMENT_ID }}
-
-          read -r -d '' GA_SCRIPT <<EOF
-          <script async src="https://www.googletagmanager.com/gtag/js?id=$GA_ID"></script>
+          
+          GA_SCRIPT="<script async src=\"https://www.googletagmanager.com/gtag/js?id=$GA_ID\"></script>
           <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag("js", new Date());
-            gtag("config", "$GA_ID");
-          </script>
-          EOF
+            gtag(\"js\", new Date());
+            gtag(\"config\", \"$GA_ID\");
+          </script>"
 
-          while IFS=' ' read -r repo branch || [ -n "$repo" ]; do
-            if [ -z "$repo" ] || [ -z "$branch" ]; then
-              echo "⚠️ Skipping malformed line: repo='$repo' branch='$branch'"
-              continue
-            fi
-
-            echo "📦 Processing $repo ($branch)"
+          while read repo branch; do
+            echo "Processing $repo ($branch)"
             gh repo clone damzaky/$repo
             cd $repo
             git checkout $branch
@@ -78,7 +65,7 @@ jobs:
             find ../../$repo -name "*.html" -exec sed -i "/<\/head>/i $GA_SCRIPT" {} +
 
             cd ..
-          done < eligible.txt
+          done < ../eligible.txt
 
       - name: Clean old files (except .git and .github)
         run: |
