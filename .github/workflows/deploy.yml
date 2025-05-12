@@ -42,6 +42,7 @@ jobs:
 
       - name: Clone, Inject, Copy
         run: |
+          set -euxo pipefail
           cd sites
           echo "---- eligible.txt ----"
           cat eligible.txt
