@@ -29,10 +29,17 @@ jobs:
 
           while read -r repo; do
             echo "Checking $repo"
+            
             if [ -z "$repo" ]; then
               echo "⚠️ Skipping empty repo name"
               continue
             fi
+          
+            if [ "$repo" = "damzaky.github.io" ]; then
+              echo "🚫 Skipping excluded repo: $repo"
+              continue
+            fi
+          
             if gh api repos/damzaky/$repo/pages &> /dev/null; then
               branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
               if [ -n "$branch" ]; then
@@ -40,6 +47,7 @@ jobs:
               fi
             fi
           done < repos.txt
+
 
       - name: Clone, Inject, Copy
         run: |
