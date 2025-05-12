@@ -76,7 +76,7 @@ jobs:
             mkdir -p ../../$repo
             cp -r * ../../$repo/ || true
 
-            find ../../$repo -name "*.html" -exec sed -i "/<\/head>/i $GA_SCRIPT" {} +
+            find ../../"$repo" -name "*.html" -exec sed -i "/<\/head>/i $(printf '%s\n' "$GA_SCRIPT")" {} +
 
             cd ..
           done < eligible.txt
