@@ -43,6 +43,9 @@ jobs:
       - name: Clone, Inject, Copy
         run: |
           cd sites
+          echo "---- eligible.txt ----"
+          cat ../eligible.txt
+          echo "----------------------"
           GA_ID=${{ vars.GA_MEASUREMENT_ID }}
           
           GA_SCRIPT="<script async src=\"https://www.googletagmanager.com/gtag/js?id=$GA_ID\"></script>
