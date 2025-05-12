@@ -71,7 +71,10 @@ jobs:
             find ../../$repo -name "*.html" -exec sed -i "/<\/head>/i $GA_SCRIPT" {} +
 
             cd ..
-          done < ../eligible.txt
+          INPUT_FILE=$(realpath ../eligible.txt)
+          while IFS=' ' read -r repo branch || [ -n "$repo" ]; do
+            ...
+          done < "$INPUT_FILE"
 
       - name: Clean old files (except .git and .github)
         run: |
