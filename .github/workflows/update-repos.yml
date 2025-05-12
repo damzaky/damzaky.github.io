@@ -2,8 +2,6 @@ name: Update Repos List
 
 on:
   workflow_dispatch:   # Allows manual runs
-  schedule:
-    - cron: '0 0 * * 1' # Runs weekly
 
 jobs:
   generate:
