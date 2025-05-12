@@ -28,6 +28,10 @@ jobs:
 
           while read repo; do
             echo "Checking $repo"
+            if [ -z "$repo" ]; then
+              echo "⚠️ Skipping empty repo name"
+              continue
+            fi
             if gh api repos/damzaky/$repo/pages &> /dev/null; then
               branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
               echo "$repo $branch" >> ../eligible.txt
