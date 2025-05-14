@@ -3,30 +3,6 @@ layout: default
 title: Playground
 ---
 
-	    <div class='blog-post'><p class="blog-post-meta">&gt;</p> <h2 class="blog-post-title"><a href="https://damzaky.github.io/Neural-Network-Playground/" title="Neural Network Playground">Neural Network Playground</a></h2>
-<div style="clear:both;"></div>
-</div>
-
-	    <div class='blog-post'><p class="blog-post-meta">&gt;</p> <h2 class="blog-post-title"><a href="https://damzaky.github.io/Jokowi-or-Prabowo-text-classifier/" title="Jokowi or Prabowo text classifier">Jokowi or Prabowo text classifier</a></h2>
-<div style="clear:both;"></div>
-</div>
-
-	    <div class='blog-post'><p class="blog-post-meta">&gt;</p> <h2 class="blog-post-title"><a href="https://damzaky.github.io/Simulated-Annealing-Playground/" title="Simulated Annealing Playground">Simulated Annealing Playground</a></h2>
-<div style="clear:both;"></div>
-</div>
-
-<ul>
-  {% for repo in site.data.repos %}
-    <li>
-      <a href="{{ repo.homepage }}" target="_blank">
-        {{ repo.name }}
-      </a>
-    </li>
-  {% endfor %}
-
-	<ul>
   {% for repo in site.data.pages_repos %}
-    <li><a href="{{ repo.url }}">{{ repo.name }}</a></li>
+    <div class='blog-post'><p class="blog-post-meta">&gt;</p> <h2 class="blog-post-title"><a href="{{ repo.url }}" title="{{ repo.name }}">{{ repo.name }}</a></li></a></h2><div style="clear:both;"></div></div>
   {% endfor %}
-</ul>
-</ul>
