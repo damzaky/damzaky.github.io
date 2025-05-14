@@ -9,7 +9,7 @@
 	<meta name="description" content="Damar Zaky's coding project blog">
 	<meta name="author" content="Damar Zaky">
 	<link rel="shortcut icon" href="https://damzaky.github.io/favicon.ico" >
-	<title> Demo |  Damzaky</title>
+	<title> Text Transform Uppercase and Lowercase Generator |  Damzaky</title>
 	<link rel="alternate" title="" type="application/json" href="/feed.json" />
 	<link href="/blog.css" rel="stylesheet">
 		<link href="/index.css" rel="stylesheet">
@@ -48,26 +48,81 @@
 	</div>
 	<div class="row">
 <div class='rowi'>
-	  
-
-	    <div class='blog-post'><p class="blog-post-meta">11/15/2017</p> <h2 class="blog-post-title"><a href="/demo/Pure-css-accordion-menu" title="Pure css accordion menu">Pure css accordion menu</a></h2>
-<div style="clear:both;"></div>
+<div class='post'>
+<h2 class='blog-post-page-title'>Text Transform Uppercase and Lowercase Generator</h2>
+<article class="post-body">
+  Transform your text to uppercase or lowercase
+<br/>
+<div>
+To uppercase
+<textarea type="text" name="wid" id="wid"></textarea>
+ <button onClick="sho()" id='sho'>
+  Submit
+</button>
+<div id='result'>
+</div>
+</div>
+<br/>
+<div>
+To lowercase
+<textarea type="text" name="wid1" id="wid1"></textarea>
+ <button onClick="sho1()" id='sho1'>
+  Submit
+</button>
+<div id='result1'>
+</div>
 </div>
 
-	  
+<script type='text/javascript'>
+ function replaceStr(str, find, replace) {
+    for (var i = 0; i < find.length; i++) {
+        str = str.replace(new RegExp(find[i], 'g'), replace[i]);
+    }
+    return str;
+}
+ 
+function sho(){
+var find = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var replace = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    
+var wid = document.getElementById('wid').value;
+ if(wid==''){
+  var has = "please input the text";
+ }else {
+has = replaceStr(wid, find, replace);
+ }
+ document.getElementById("result").innerHTML = has;
+}
+ 
+function sho1(){
+var replace = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var find = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    
+var wid1 = document.getElementById('wid1').value;
+ if(wid1==''){
+  var has = "please input the text";
+ }else {
+has = replaceStr(wid1, find, replace);
+ }
+ document.getElementById("result1").innerHTML = has;
+}
 
-	    <div class='blog-post'><p class="blog-post-meta">07/03/2017</p> <h2 class="blog-post-title"><a href="/demo/POST-request-with-AJAX-and-without-AJAX" title="POST request with AJAX and without AJAX">POST request with AJAX and without AJAX</a></h2>
-<div style="clear:both;"></div>
+function KeyPress(e,f)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById(f).click();
+        return false;
+    }
+    return true;
+}
+</script>
+
+</article>
+<p class="meta">13 Jul 2017</p>
 </div>
-
-	  
-
-	    <div class='blog-post'><p class="blog-post-meta">07/02/2017</p> <h2 class="blog-post-title"><a href="/demo/Pure-CSS-Full-Page-Slider" title="Pure CSS Full Page Slider">Pure CSS Full Page Slider</a></h2>
-<div style="clear:both;"></div>
-</div>
-
-	  
-	
 
 		</div>
 	</div>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, minimumscale=
+1.0, maximum-scale=1.0" />
+	<meta name="description" content="Damar Zaky's coding project blog">
+	<meta name="author" content="Damar Zaky">
+	<link rel="shortcut icon" href="https://damzaky.github.io/favicon.ico" >
+	<title> POST request with AJAX and without AJAX |  Damzaky</title>
+	<link rel="alternate" title="" type="application/json" href="/feed.json" />
+	<link href="/blog.css" rel="stylesheet">
+		<link href="/index.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<meta name='robots' content='index,follow' />
+		<style type="text/css">			
+
+</style>
+
+</head>
+
+<body>
+<div class='allhold'>
+<div class='sechold'>
+	
+	
+
+		<div class="blog-header">
+		<div class='headcon'>
+	<h1 class="blog-title"><a href="https://damzaky.github.io">Damzaky</a></h1>
+	<p class="lead blog-description">Probably just a random stranger in your life</p>
+</div>
+	</div>
+	<div class="blog-masthead">
+		<nav class="blog-nav">
+			<li class="page_item"><a href="https://damzaky.github.io/playground">Playground</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/blog">Blog</a></li>
+			<li class='page_item'><a href="https://damzaky.github.io/demo">Demo</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/generator">Generator</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/about">About</a></li>
+		</nav>
+	</div>
+	<div class="row">
+<div class='rowi'>
+<div class='post'>
+<h2 class='blog-post-page-title'>POST request with AJAX and without AJAX</h2>
+<article class="post-body">
+  WITHOUT AJAX
+<br/>
+<form action=
+  "https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/formResponse"
+  target="_self" method="post">
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="Name" aria-describedby=
+                      "i.desc.948698823 i.err.948698823" name="entry.1543062005" value=""
+                      dir="auto" data-initial-dir="auto" data-initial-value="" placeholder="Name" />
+  <br/>
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="E-mail"
+                      aria-describedby="i.desc.1358518643 i.err.1358518643" name=
+                      "entry.14725996" value="" dir="auto" data-initial-dir="auto"
+                      data-initial-value="" placeholder="Email"/>
+  <br/>
+                  <textarea class="quantumWizTextinputPapertextareaInput exportTextarea"
+                  jsname="YPqjbf" data-rows="1" tabindex="0" aria-label="Message"
+                  jscontroller="gZjhIf" jsaction="input:Lg5SV;ti6hGc:XMgOHc;rcuQ6b:WYd;"
+                  name="entry.1152730038" dir="auto" data-initial-dir="auto"
+                  data-initial-value="" style="height: 24px;" placeholder="message">
+</textarea>
+<button type='submit' style='display:block;'>Submit</button>
+ 
+  </form>
+<br/>
+WITH AJAX
+<br/>
+<form action=
+  "https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/formResponse"
+  target="_self" >
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="Name" aria-describedby=
+                      "i.desc.948698823 i.err.948698823" name="entry.1543062005" value=""
+                      dir="auto" data-initial-dir="auto" data-initial-value="" placeholder="Name" />
+  <br/>
+                      <input type="text" class=
+                      "quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf"
+                      autocomplete="off" tabindex="0" aria-label="E-mail"
+                      aria-describedby="i.desc.1358518643 i.err.1358518643" name=
+                      "entry.14725996" value="" dir="auto" data-initial-dir="auto"
+                      data-initial-value="" placeholder="Email"/>
+  <br/>
+                  <textarea class="quantumWizTextinputPapertextareaInput exportTextarea"
+                  jsname="YPqjbf" data-rows="1" tabindex="0" aria-label="Message"
+                  jscontroller="gZjhIf" jsaction="input:Lg5SV;ti6hGc:XMgOHc;rcuQ6b:WYd;"
+                  name="entry.1152730038" dir="auto" data-initial-dir="auto"
+                  data-initial-value="" style="height: 24px;" placeholder="message">
+</textarea>
+<input type="button" value="Submit" onclick="javascript:AJAXPost(this)" style='display:block;'>
+ 
+  </form>
+<div id='myDiv'></div>
+<br/>
+<br/>
+Try to submit data on both forms above and check the response on <a href='https://docs.google.com/forms/d/e/1FAIpQLSfK7dbp5vTNgohPxPcCUvGDK9ACznGZmaOjog9lJ8HHMFLHqA/viewanalytics'>this link</a> if your submission was submitted
+<script type='text/javascript'>
+  function AJAXPost(myself) {
+    var elem   = myself.form.elements;
+    var url    = myself.form.action;    
+    var params = "";
+    var value;
+
+    for (var i = 0; i < elem.length; i++) {
+        if (elem[i].tagName == "SELECT") {
+            value = elem[i].options[elem[i].selectedIndex].value;
+        } else {
+            value = elem[i].value;                
+        }
+        params += elem[i].name + "=" + encodeURIComponent(value) + "&";
+    }
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else { 
+        // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+       if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          console.log('xhr.readyState=',xmlhttp.readyState);
+          console.log('xhr.status=',xmlhttp.status);
+          console.log('response=',xmlhttp.responseText);
+       }
+    }
+    alert('success');
+/*xmlhttp.onreadystatechange = function() {
+  if (xmlhttp.status == 200) {
+               alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+           }
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if (xmlhttp.status == 200) {
+               alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+           }
+           else if (xmlhttp.status == 400) {
+              alert('There was an error 400');
+           }
+           else {
+               alert('something else other than 200 was returned');
+           }
+        }
+    };*/
+
+    xmlhttp.open("POST",url,false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xmlhttp.setRequestHeader("Content-length", params.length);
+    //xmlhttp.setRequestHeader("Connection", "close");
+    /*xmlhttp.onload = function() {
+    
+    if (xmlhttp.status === 200) {
+        alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+    } else if (xmlhttp.status === 200 && xmlhttp.responseText !== newName) {
+        alert('Something went wrong.  Name is now ' + xmlhttp.responseText);
+    }
+    else if (xmlhttp.status !== 200) {
+        alert('Request failed.  Returned status of ' + xmlhttp.status);
+    }
+};*/
+    xmlhttp.send(params);
+
+    document.getElementById("myDiv").innerHTML = "gratz";
+    //alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+    return xmlhttp.responseText;
+}
+  //alert("Congratulations, you just submitted the submission by using AJAX, so that you don't have to go to another page when submitting it!");
+</script>
+
+</article>
+<p class="meta">03 Jul 2017</p>
+</div>
+
+		</div>
+	</div>
+		<footer class="blog-footer">
+      <p><a href="https://damzaky.github.io">Damzaky</a> managed by <a href="https://dmarzky.appspot.com">Damar Zaky</a>
+    </footer>
+ 
+</div>
+</div>
+<script>
+</script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, minimumscale=
+1.0, maximum-scale=1.0" />
+	<meta name="description" content="Damar Zaky's coding project blog">
+	<meta name="author" content="Damar Zaky">
+	<link rel="shortcut icon" href="https://damzaky.github.io/favicon.ico" >
+	<title> Full Size Instagram Profile Picture Getter |  Damzaky</title>
+	<link rel="alternate" title="" type="application/json" href="/feed.json" />
+	<link href="/blog.css" rel="stylesheet">
+		<link href="/index.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<meta name='robots' content='index,follow' />
+		<style type="text/css">			
+
+</style>
+
+</head>
+
+<body>
+<div class='allhold'>
+<div class='sechold'>
+	
+	
+
+		<div class="blog-header">
+		<div class='headcon'>
+	<h1 class="blog-title"><a href="https://damzaky.github.io">Damzaky</a></h1>
+	<p class="lead blog-description">Probably just a random stranger in your life</p>
+</div>
+	</div>
+	<div class="blog-masthead">
+		<nav class="blog-nav">
+			<li class="page_item"><a href="https://damzaky.github.io/playground">Playground</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/blog">Blog</a></li>
+			<li class='page_item'><a href="https://damzaky.github.io/demo">Demo</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/generator">Generator</a></li>
+			<li class="page_item"><a href="https://damzaky.github.io/about">About</a></li>
+		</nav>
+	</div>
+	<div class="row">
+<div class='rowi'>
+<div class='post'>
+<h2 class='blog-post-page-title'>Full Size Instagram Profile Picture Getter</h2>
+<article class="post-body">
+  <div id='max'>
+  <div id='pad'>
+<input type='text' placeholder='type instagram username here' name='inp' id='inp' onkeypress="return KeyPress(event);">
+<button onClick="sho()" id='sho'>
+  Submit
+</button>
+  </div>
+</div>
+<div id='resulta'><div id='resu'>Enter a username on the textbox, e.g damzaky</div><img src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' alt='loading, please wait' id='ima'></div>
+<br/>
+<a href='https://github.com/Damzaky/Full-Size-Instagram-Profile-Picture-Getter'>Click here</a> to see the source code. Don't forget to follow my instagram: <a href='https://www.instagram.com/damzaky/'>@Damzaky</a>
+<style type='text/css'>
+  #max {
+   position:relative; 
+  }
+  #pad {
+    margin-right:115px;
+  }
+  #inp{  
+  background: #39393e;
+    border: 1px solid #2b2b2b;
+    padding: 10px 0;
+    color: #fbfbfb;
+    font-size: 150%;
+    text-indent: 15px;
+    border-radius: 3px;
+    width:100%;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+  #inp:hover{
+    background:#434348;
+  }
+  #inp:focus{
+    outline: none;
+    border-color: #25c1b3;
+    box-shadow: 0 0 20px #22bfb1;
+  }
+  #sho{
+    width: 100px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    bottom: 0;
+    border: 0;
+    background: #22bfb1;
+    color: #3e3e42;
+    font-size: 120%;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  #resulta{
+margin: 20px 0;
+    text-align: center;
+    background: #2b2b2b;
+    border: 1px solid #2b2b2b;
+    padding: 10px;
+    border-radius: 3px;
+    color: #757575;
+    font-size: 120%;
+    line-height: 160%;
+  }
+  #ima {
+    display:block;max-width: 100%;margin:0 auto;
+  }
+</style>
+<script>
+function sho() {
+  document.getElementById("resu").innerHTML = "Working...";
+  document.getElementById("ima").src= "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+var de = (document.getElementById('inp').value).replace('@','');
+    if (de == "") {
+        document.getElementById("resu").innerHTML = "Please enter a username!";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //document.getElementById("resu").innerHTML = this.responseText;
+              if(this.responseText == "The username you entered doesn't exist"){
+              document.getElementById("resu").innerHTML = this.responseText;
+              document.getElementById("ima").src= "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+              }else{
+              document.getElementById("resu").innerHTML = "";
+              document.getElementById("ima").src= this.responseText;
+              }
+            }
+        };
+        xmlhttp.open("GET","https://thebungleon.appspot.com/instagram.php?u="+de,true);
+        xmlhttp.send();
+    }
+}
+  function KeyPress(e)
+{
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('sho').click();
+        return false;
+    }
+    return true;
+}
+</script>
+
+</article>
+<p class="meta">05 Jul 2017</p>
+</div>
+
+		</div>
+	</div>
+		<footer class="blog-footer">
+      <p><a href="https://damzaky.github.io">Damzaky</a> managed by <a href="https://dmarzky.appspot.com">Damar Zaky</a>
+    </footer>
+ 
+</div>
+</div>
+<script>
+</script>
+  </body>
+</html>

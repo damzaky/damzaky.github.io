@@ -9,7 +9,7 @@
 	<meta name="description" content="Damar Zaky's coding project blog">
 	<meta name="author" content="Damar Zaky">
 	<link rel="shortcut icon" href="https://damzaky.github.io/favicon.ico" >
-	<title> About |  Damzaky</title>
+	<title> Element Combinator |  Damzaky</title>
 	<link rel="alternate" title="" type="application/json" href="/feed.json" />
 	<link href="/blog.css" rel="stylesheet">
 		<link href="/index.css" rel="stylesheet">
@@ -49,29 +49,90 @@
 	<div class="row">
 <div class='rowi'>
 <div class='post'>
-<h2 class='blog-post-page-title'>About</h2>
+<h2 class='blog-post-page-title'>Element Combinator</h2>
 <article class="post-body">
-  <div id='bbo'>
-Hello there! i'm Damar Zaky. I'm interested in developing Front-end, Android, iOS and NLP-related stuffs. You can see my programming projects on my <a href='https://github.com/damzaky'>Github</a>.
-I also play guitar and piano and mostly influenced by rock n' roll and alternative rock genre.
-  <br>
-  <br>
-	You can email me via <code>damzaky@gmail.com</code> or you can follow me on <a href='https://www.instagram.com/damzaky'>Instagram</a> or <a href='https://twitter.com/damzaky'>Twitter</a>.
+  Elements:
+<br>
+<button id='add'>Add element</button>
+<button id='rem'>Remove element</button>
+<div id='elements' style='margin:20px 0;'>
+<div>Element 1: <input type='text' id='e1'></div>
 </div>
-<div style='clear: both;'></div>
-<style>
-#bbo{
-	    font-size: 150%;
-    line-height: 130%;
-}
-	#lefts{
-		    float: left;
-    margin-right: 20px;
-    border-radius: 20px;
+<button id='sub'>Generate</button>
+<div id='out'></div>
+<script>
+counter=1
+document.getElementById('add').addEventListener('click', function() {
+	div = document.createElement("div");
+	nu = document.createElement("input");
+	nu.setAttribute("id", "e"+(counter+1));
+	nu.setAttribute("type","text");
+	div.appendChild(document.createTextNode("Element "+(counter+1)+": "))
+    div.appendChild(nu);
+	//div.appendChild(document.createElement("br"));
+	
+	document.getElementById("elements").appendChild(div)
+	counter++;
+}, false);
+document.getElementById('sub').addEventListener('click', function() {
+	create(counter)
+}, false);
+document.getElementById('rem').addEventListener('click', function() {
+	if(counter!=1){
+		document.getElementById("elements").removeChild(document.getElementById("elements").lastChild);
+		//var remo = document.getElementById("e"+(counter));
+		//remo.parentElement.removeChild(remo);
+		counter--;
 	}
-</style>
+}, false);
+var cc
+function com(c,t){
+	if(c!=0){
+		for(var i=1;i<=t;i++){
+			if(!(udah.includes(i))){
+				udah.push(i)
+				com(c-1,t)
+				if(c==1){
+					var out=document.getElementById('out')
+					//alle.push(test)
+					//var str=udah
+					var tosen = udah.map(function(j){
+						 return elm[j-1];
+					})
+					out.appendChild(document.createTextNode(cc+". "+tosen.join(" ")));
+					out.appendChild(document.createElement("br"));
+					cc++
+				}
+					
+				udah.pop()
+			}
+		}
+	}
+}
+var udah
+function create(t){
+	cc=1
+	var ovt = document.getElementById("out");
+	while (ovt.firstChild) {
+		ovt.removeChild(ovt.firstChild);
+	}
+	//alle=[]
+	elm=[]
+	for(var i=0;i<t;i++){
+		elm.push(document.getElementById("e"+(i+1)).value)
+	}
+	udah=[]
+	for(var i=1;i<=t;i++){
+		udah.push(i)
+		com(t-1,t)
+		udah.pop()
+	}
+	//console.log(alle)
+}
 
+</script>
 </article>
+<p class="meta">20 Oct 2018</p>
 </div>
 
 		</div>
