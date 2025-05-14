@@ -17,14 +17,9 @@ jobs:
         with:
           ruby-version: '3.1'
 
-      - name: Install Jekyll dependencies
-        run: bundle install
-
-      - name: Install Node for API call
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
+      - name: Install Jekyll
+        run: sudo gem install jekyll bundler
+      
       - name: Generate GitHub Pages Repo List
         run: |
           USERNAME="damzaky"
@@ -49,7 +44,7 @@ jobs:
           echo "]" >> _data/pages_repos.json
 
       - name: Build Jekyll Site
-        run: bundle exec jekyll build
+        run: jekyll build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
