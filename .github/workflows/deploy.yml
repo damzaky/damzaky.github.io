@@ -27,18 +27,26 @@ jobs:
 
       - name: Generate GitHub Pages Repo List
         run: |
+          USERNAME="damzaky"
+          PAGES_REPO="${USERNAME}.github.io"
+          
           mkdir -p _data
           echo "[" > _data/pages_repos.json
           FIRST=1
-          for repo in $(gh repo list damzaky --limit 1000 --json name --jq '.[].name'); do
-            if gh api "repos/your-username/$repo/pages" &>/dev/null; then
+      
+          for repo in $(gh repo list $USERNAME --limit 1000 --json name --jq '.[].name'); do
+            if [[ "$repo" == "$PAGES_REPO" ]]; then
+              continue
+            fi
+      
+            if gh api "repos/$USERNAME/$repo/pages" &>/dev/null; then
               [ $FIRST -eq 0 ] && echo "," >> _data/pages_repos.json
-              echo "{\"name\": \"$repo\", \"url\": \"https://your-username.github.io/$repo/\"}" >> _data/pages_repos.json
+              echo "{\"name\": \"$repo\", \"url\": \"https://$USERNAME.github.io/$repo/\"}" >> _data/pages_repos.json
               FIRST=0
             fi
           done
+      
           echo "]" >> _data/pages_repos.json
-
 
       - name: Build Jekyll Site
         run: bundle exec jekyll build
