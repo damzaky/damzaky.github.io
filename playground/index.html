@@ -23,4 +23,10 @@ title: Playground
       </a>
     </li>
   {% endfor %}
+
+	<ul>
+  {% for repo in site.data.pages_repos %}
+    <li><a href="{{ repo.url }}">{{ repo.name }}</a></li>
+  {% endfor %}
+</ul>
 </ul>
