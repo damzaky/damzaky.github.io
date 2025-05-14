@@ -1,3 +1,4 @@
+# .github/workflows/deploy.yml
 name: Build and Deploy Jekyll Site
 
 on:
@@ -5,46 +6,44 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Ruby
+      - name: Set up Ruby 3.0 (required by github-pages)
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: 3.0
 
-      - name: Install Jekyll
-        run: sudo gem install jekyll bundler
-      
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config set path 'vendor/bundle'
+          bundle install
+
       - name: Generate GitHub Pages Repo List
         run: |
-          USERNAME="damzaky"
-          PAGES_REPO="${USERNAME}.github.io"
-          
+          USERNAME="${{ github.repository_owner }}"
           mkdir -p _data
           echo "[" > _data/pages_repos.json
           FIRST=1
-      
           for repo in $(gh repo list $USERNAME --limit 1000 --json name --jq '.[].name'); do
-            if [[ "$repo" == "$PAGES_REPO" ]]; then
-              continue
-            fi
-      
+            if [[ "$repo" == "${USERNAME}.github.io" ]]; then continue; fi
             if gh api "repos/$USERNAME/$repo/pages" &>/dev/null; then
               [ $FIRST -eq 0 ] && echo "," >> _data/pages_repos.json
               echo "{\"name\": \"$repo\", \"url\": \"https://$USERNAME.github.io/$repo/\"}" >> _data/pages_repos.json
               FIRST=0
             fi
           done
-      
           echo "]" >> _data/pages_repos.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Jekyll Site
-        run: jekyll build
+        run: bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
