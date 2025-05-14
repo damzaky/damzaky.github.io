@@ -1,107 +1,50 @@
-name: Manual Deploy All with Google Analytics
+name: Build and Deploy Jekyll Site
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: github-pages
 
     steps:
-      - name: Checkout current site
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install GitHub CLI
-        run: sudo apt install gh -y
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
 
-      - name: Auth GitHub CLI
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+      - name: Install Jekyll dependencies
+        run: bundle install
 
-      - name: Get eligible repos
+      - name: Install Node for API call
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Generate GitHub Pages Repo List
         run: |
-          mkdir -p sites
-          cd sites
-
-          # List all user repositories
-          gh repo list damzaky --limit 1000 --json name --jq '.[].name' > repos.txt
-          > eligible.txt
-
-          while read -r repo; do
-            echo "Checking $repo"
-            
-            if [ -z "$repo" ]; then
-              echo "⚠️ Skipping empty repo name"
-              continue
+          mkdir -p _data
+          echo "[" > _data/pages_repos.json
+          FIRST=1
+          for repo in $(gh repo list damzaky --limit 1000 --json name --jq '.[].name'); do
+            if gh api "repos/your-username/$repo/pages" &>/dev/null; then
+              [ $FIRST -eq 0 ] && echo "," >> _data/pages_repos.json
+              echo "{\"name\": \"$repo\", \"url\": \"https://your-username.github.io/$repo/\"}" >> _data/pages_repos.json
+              FIRST=0
             fi
-          
-            if [ "$repo" = "damzaky.github.io" ]; then
-              echo "🚫 Skipping excluded repo: $repo"
-              continue
-            fi
-          
-            if gh api repos/damzaky/$repo/pages &> /dev/null; then
-              branch=$(gh api repos/damzaky/$repo/pages --jq .source.branch)
-              if [ -n "$branch" ]; then
-                echo "$repo $branch" >> eligible.txt
-              fi
-            fi
-          done < repos.txt
+          done
+          echo "]" >> _data/pages_repos.json
 
 
-      - name: Clone, Inject, Copy
-        run: |
-          set -euxo pipefail
-          cd sites
-          echo "---- eligible.txt ----"
-          cat eligible.txt
-          echo "----------------------"
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
 
-          GA_ID=${{ vars.GA_MEASUREMENT_ID }}
-
-          GA_SCRIPT=$(cat <<EOF
-          <script async src="https://www.googletagmanager.com/gtag/js?id=$GA_ID"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag("js", new Date());
-            gtag("config", "$GA_ID");
-          </script>
-          EOF
-          )
-
-          while IFS=' ' read -r repo branch || [ -n "$repo" ]; do
-            if [ -z "$repo" ] || [ -z "$branch" ]; then
-              echo "⚠️ Skipping malformed line: repo='$repo' branch='$branch'"
-              continue
-            fi
-
-            echo "📦 Processing $repo ($branch)"
-            gh repo clone damzaky/$repo
-            cd $repo
-            git checkout $branch
-
-            mkdir -p ../../$repo
-            cp -r * ../../$repo/ || true
-
-            ESCAPED_SCRIPT=$(printf '%s\n' "$GA_SCRIPT" | sed 's/[&/\]/\\&/g')
-            find ../../"$repo" -name "*.html" -exec sed -i "/<\/head>/i $ESCAPED_SCRIPT" {} +
-
-            cd ..
-          done < eligible.txt
-
-      - name: Clean old files (except .git and .github)
-        run: |
-          find . -mindepth 1 -maxdepth 1 ! -name ".git" ! -name ".github" ! -name "sites" -exec rm -rf {} +
-
-      - name: Move new files to root
-        run: |
-          mv sites/* .
-
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "Manual deploy of all repos with GA" || echo "No changes to commit"
-          git push origin main
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
