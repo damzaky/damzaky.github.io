@@ -8,4 +8,13 @@
   padding: 6px 50px 6px 10px;
   border-bottom-right-radius: 128px 65px;
   color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+#homepage-logo:hover {
+  opacity: 1;
 }
