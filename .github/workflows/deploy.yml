@@ -1,10 +1,8 @@
-# .github/workflows/deploy.yml
 name: Build and Deploy Jekyll Site
 
 on:
   push:
     branches: [master]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -45,6 +43,27 @@ jobs:
 
       - name: Build Jekyll Site
         run: bundle exec jekyll build
+
+      - name: Generate urls.txt from repo list
+        run: jq -r '.[].url' _data/pages_repos.json > urls.txt
+
+      - name: Append repo URLs to sitemap.xml
+        run: |
+          SITEMAP_FILE="_site/sitemap.xml"
+          TMP_FILE="_site/sitemap.temp.xml"
+          cp "$SITEMAP_FILE" "$TMP_FILE"
+
+          awk '
+            /<\/urlset>/ {
+              while ((getline url < "urls.txt") > 0) {
+                print "  <url><loc>" url "</loc></url>"
+              }
+              close("urls.txt")
+            }
+            { print }
+          ' "$TMP_FILE" > "$SITEMAP_FILE"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
