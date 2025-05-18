@@ -12,4 +12,6 @@ collections:
     permalink: /:year/:month/:day/:title
 plugins:
   - jekyll-github-metadata
+  - jekyll-sitemap
+url: "https://damzaky.github.io"
 theme: jekyll-theme-minimal
